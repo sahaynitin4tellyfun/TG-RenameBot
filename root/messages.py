@@ -25,6 +25,19 @@ __© Coded By [Animesh](https://t.me/Animesh941) ❤️__
 
 __© Coded By [Animesh](https://t.me/Animesh941)❤️__
 """
+    
+    ABOUT_USER = """
+**Hey, I'm Anupama... I'm a File Renamer Bot Created for [Ravi Teja](https://t.me/MeRaviTeja)
+
+If you want some bots to be created for you, you are free to ping here, [Animesh](https://t.me/Animesh941) 🇮🇳
+
+● Developed For : [This Person](https://t.me/MeRaviTeja)
+● Coded By : [Animesh Verma](https://t.me/Animesh941)
+● Language : [Python 3](https://www.python.org)
+● Library : [Pyrogram](https://docs.pyrogram.org)
+● Server : [Heroku](https://heroku.com)**
+"""
+    
     DOWNLOAD_MSG = "**📥 Downloading....**"
     DOWNLOAD_FAIL_MSG = "**🙄 Failed to download the given file..**"
     UPLOAD_MSG = "📤 Now, Uploading....**"
