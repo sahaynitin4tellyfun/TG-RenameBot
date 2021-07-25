@@ -62,7 +62,7 @@ async def cb_handler(bot, update):
     )
   elif update.data == "close":
     await update.message.delete()
-    await update.reply_to_message.delete()
+    await update.message.reply_to_message.delete()
     
 @Client.on_message(filters.command("help"))
 async def help_user(c,m):
