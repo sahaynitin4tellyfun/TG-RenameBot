@@ -72,10 +72,15 @@ async def help_user(c,m):
 async def about_user(c,m):
   await m.reply_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True, quote=True)
   
-@Client.on_message(filters.command("forward") & filters.reply & filters.users(Config.OWNER_ID))
+@Client.on_message(filters.command("forward") & filters.reply)
 async def forward(c,m):
   await message.copy(chat_id=-1001467167475)
-  
+ 
+@Client.on_message(filters.command("forward"))
+async def forward_no(c,m):
+  z = await m.reply_text("👀 Processing...**", True) 
+  await z.edit_text("**👀 Reply to any media or message with /forward to forward it**\n\n__It is a command used to forward a message or media to the channel, Only my owner can access this feature..!__", qoute=True)
+
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
   await m.reply_text(Translation.START_TEXT.format(m.from_user.mention), quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
