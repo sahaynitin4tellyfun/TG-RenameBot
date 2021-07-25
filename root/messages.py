@@ -40,6 +40,6 @@ If you want some bots to be created for you, you are free to ping here, [Animesh
     
     DOWNLOAD_MSG = "**📥 Downloading....**"
     DOWNLOAD_FAIL_MSG = "**🙄 Failed to download the given file..**"
-    UPLOAD_MSG = "📤 Now, Uploading....**"
+    UPLOAD_MSG = "**📤 Now, Uploading....**"
     UPLOAD_FAIL_MSG = "**😢 Failed to upload the renamed file..**"
     UPLOAD_DONE_MSG = "**✅ Thanks for Using Meh...!**"
