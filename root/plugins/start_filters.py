@@ -39,6 +39,31 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
     InlineKeyboardButton("🏡 Home", callback_data="home"),
     InlineKeyboardButton("🔐 Close", callback_data="close")
    ]])
+
+@Client.on_callback_query()
+async def cb_handler(bot, update):
+  if update.data == "home":
+    await update.message.edit_text(
+      text=Translation.START_TEXT.format(update.from_user.mention),
+      reply_markup=START_BUTTONS,
+      disable_web_page_preview=True
+    )
+  elif update.data == "help":
+    await update.message.edit_text(
+      text=Translation.HELP_USER,
+      reply_markup=HELP_BUTTONS,
+      disable_web_page_preview=True
+    )
+  elif update.data == "about":
+    await update.message.edit_text(
+      text=Translation.ABOUT_USER,
+      reply_markup=ABOUT_BUTTONS,
+      disable_web_page_preview=True
+    )
+  elif update.data == "close":
+    await update.message.delete()
+    await update.reply_to_message.delete()
+    
 @Client.on_message(filters.command("help"))
 async def help_user(c,m):
   await m.reply_text(Translation.HELP_USER, reply_markup=HELP_BUTTONS, disable_web_page_preview=True, quote=True)
@@ -49,7 +74,7 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
-  await m.reply_text(Translation.START_TEXT, quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
+  await m.reply_text(Translation.START_TEXT.format(update.from_user.mention), quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
   
 @Client.on_message(filters.command("logs") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c,m):
