@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG,
 log = logging.getLogger(__name__)
 
 from pyrogram import Client,filters
-from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton, Message 
 from root.config import Config
 from root.messages import Translation
 import pyrogram
@@ -74,7 +74,7 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("forward") & (filters.text | filters.media) & filters.reply)
 async def forward(c,m):
-  await message.forward(-1001467167475)
+  await m.forward(-1001467167475)
  
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
