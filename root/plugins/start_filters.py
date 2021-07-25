@@ -74,7 +74,7 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("forward") & filters.reply)
 async def forward(c,m):
-  await message.copy(chat_id=-1001467167475, from_chat_id=message.chat.id, message_ids=message.message_id)
+  await message.copy(me)
  
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
