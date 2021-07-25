@@ -74,7 +74,7 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
-  await m.reply_text(Translation.START_TEXT.format(update.from_user.mention), quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
+  await m.reply_text(Translation.START_TEXT.format(m.from_user.mention), quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
   
 @Client.on_message(filters.command("logs") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c,m):
