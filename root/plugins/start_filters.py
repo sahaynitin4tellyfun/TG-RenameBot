@@ -78,8 +78,8 @@ async def forward(c,m):
  
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
-  z = await m.reply_text("👀 Processing...**", True) 
-  await z.edit_text("**👀 Reply to any media or message with /forward to forward it**\n\n__It is a command used to forward a message or media to the channel, Only my owner can access this feature..!__", qoute=True)
+  z = await m.reply_text("**👀 Processing...**", True) 
+  await z.edit_text("**👀 Reply to any media or message with /forward to forward it**\n\n__It is a command used to forward a message or media to the channel, Only my owner can access this feature..!__")
 
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
