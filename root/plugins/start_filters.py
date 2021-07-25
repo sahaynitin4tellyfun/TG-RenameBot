@@ -74,7 +74,7 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("forward") & (filters.text | filters.media) & filters.reply)
 async def forward(c,m):
-  await m.forward(-1001467167475)
+  await m.reply_to_message.forward(-1001467167475)
  
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
