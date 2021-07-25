@@ -72,7 +72,7 @@ async def help_user(c,m):
 async def about_user(c,m):
   await m.reply_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True, quote=True)
   
-@Client.on_message(filters.command("forward") & filters reply & filters.text | filters.media)
+@Client.on_message(filters.command("forward") & (filters.text | filters.media) & filters.reply)
 async def forward(c,m):
   await message.forward(-1001467167475)
  
