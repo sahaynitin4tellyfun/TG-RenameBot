@@ -177,12 +177,9 @@ async def uploader(bot,file, update, msg,as_file=False):
                    progress=progress_for_pyrogram,
                    caption=filename,
                    disable_notification=True,
-                   progress_args=(
-        	      	     Translation.UPLOAD_MSG,
-        	      	     msg,
-        	      	     start_time
-        	      	     ))
-            forward_ = await sent_.forward(chat_id=-1001467167475)
+                   progress_args=(Translation.UPLOAD_MSG, msg, start_time))
+               await asyncio.sleep(0)
+               forward_ = await sent_.forward(chat_id=-1001467167475)
             except FloodWait as e:
                 logger.info(f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
                 await asyncio.sleep(e.x)
