@@ -15,8 +15,9 @@ __© Coded By [Animesh](https://t.me/Animesh941) ❤️__
 ➠ Send any Image to set it as your Custom Thumbnail.
 ➠ Send me any telegram file or media... 
 ➠ Choose appropriate option...
+➠ Every File or media you rename will be automatically uploaded here as well as on your channel.
 
-🗒️ Available Commands
+🗒️ --Available Commands--
 /start - To Start the Bot
 /help - To get this message
 /about - To get info about meh
@@ -28,8 +29,6 @@ __© Coded By [Animesh](https://t.me/Animesh941)❤️__
     
     ABOUT_USER = """
 **Hey, I'm Anupama... I'm a File Renamer Bot Created for [Ravi Teja](https://t.me/MeRaviTeja)
-
-If you want some bots to be created for you, you are free to ping here, [Animesh](https://t.me/Animesh941) 🇮🇳
 
 ● Developed For : [This Person](https://t.me/MeRaviTeja)
 ● Coded By : [Animesh Verma](https://t.me/Animesh941)
