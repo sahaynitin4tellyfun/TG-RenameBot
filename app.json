@@ -24,6 +24,10 @@
       "description": "Get this value from https://my.telegram.org",
       "value": ""
     },
+    "AUTH": {
+      "description": "AUTH Users",
+      "value": ""
+    }, 
     "OWNER_ID": {
       "description": "Owner userid to use for getting logs..",
       "value": ""
