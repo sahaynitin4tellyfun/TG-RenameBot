@@ -64,7 +64,7 @@ async def cb_handler(bot, update):
     await update.message.delete()
     await update.message.reply_to_message.delete()
     
-@Client.on_message(filters.command("help") & filters private  & filters.user(Config.AUTH)) 
+@Client.on_message(filters.command("help") & filters.private  & filters.user(Config.AUTH)) 
 async def help_user(c,m, cb=False):
   if not cb:
     s=await m.reply_text("**__👀 Processing...__**", True)
@@ -72,7 +72,7 @@ async def help_user(c,m, cb=False):
   if cb:
     return await m.message.edit(Translation.HELP_USER, reply_markup=HELP_BUTTONS, disable_web_page_preview=True)
     
-@Client.on_message(filters.command("about") & filters private  & filters.user(Config.AUTH))
+@Client.on_message(filters.command("about") & filters.private  & filters.user(Config.AUTH))
 async def about_user(c,m, cb=False):
   if not cb:
     s=await m.reply_text("**__👀 Processing...__**", True)
