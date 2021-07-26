@@ -21,7 +21,6 @@ __© Coded By [Animesh](https://t.me/Animesh941) ❤️__
 /start - To Start the Bot
 /help - To get this message
 /about - To get info about meh
-/forward - To forward a message to channel 
 /showthumb & /delthumb for Thumbnail**
 
 __© Coded By [Animesh](https://t.me/Animesh941)❤️__
