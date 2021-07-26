@@ -76,9 +76,15 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("start") & filters.private & filters.user(Config.AUTH))
 async def start_msg(c,m):
-  s=await m.reply_text("**__👀 Processing...__**", True)
-  await s.edit_text(Translation.START_TEXT.format(m.from_user.mention), reply_markup=START_BUTTONS, disable_web_page_preview=True)
-  
+  if Config.AUTH:
+    s=await m.reply_text("**__👀 Processing...__**", True)
+    await s.edit_text(Translation.START_TEXT.format(m.from_user.mention), reply_markup=START_BUTTONS, disable_web_page_preview=True)
+  else:
+    s=await m.reply_text("**__👀 Processing...__**", True)
+    await s.edit_text(f"**Sorry {}, I'm a File Renamer Bot but you can't access me....! Only [Ravi Teja](https://t.me/MeRaviTeja) can access me... \n\n__😏 You can too create your personal bots, Contact [Here](https://t.me/Animesh941)\n🤖 Coded By [Animesh Verma](https://t.me/Animesh941)__**".format(m.from_user.mention), 
+                      reply_markup=InlineKeyboardMarkup([[
+                        InlineKeyboardButton("⚙ Create Your Bot 🤖", url="https://t.me/Animesh941")]]), disable_web_page_preview=True)
+
 @Client.on_message(filters.command("logs") & filters.private & filters.user(Config.AUTH))
 async def log_msg(c,m):
   z =await m.reply_text("**👀 Processing...**", True)
