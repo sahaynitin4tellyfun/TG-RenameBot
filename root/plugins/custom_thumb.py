@@ -25,7 +25,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 
-@Client.on_message(filters.photo & filters.private & filters.user(Config.AUTH))
+@Client.on_message(filters.photo & filters.private)
 async def save_photo(c,m):
     v = await m.reply_text("**👀 Saving Thumbnail...**",True)
     if m.media_group_id is not None:
