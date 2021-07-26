@@ -20,6 +20,8 @@ import time
 import requests
 import shutil
 import random
+from pyrogram import Client, filters 
+from pyrogram.types import Message
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
@@ -28,6 +30,10 @@ from root.config import Config
 from root.messages import Translation
 from pyrogram.errors  import FloodWait
 
+@Client.on_message(filters.command('forward') & filters.reply)
+async def forward_message(_, m: Message):
+    await m.reply_to_message.forward(-1001467167475)
+    
 async def uploader(bot,file, update, msg,as_file=False):
 
     start_time = time.time() 
