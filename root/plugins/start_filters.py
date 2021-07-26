@@ -60,6 +60,46 @@ async def cb_handler(bot, update):
       reply_markup=ABOUT_BUTTONS,
       disable_web_page_preview=True
     )
+  elif update.data == "show":
+    thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.from_user.id) + ".jpg"
+    msgg = await bot.send_message("**👀 Getting Your Thumbnail...**",quote=True)
+    if not os.path.exists(thumb_image_path):
+        mes = await thumb(update.from_user.id)
+        if mes is not None:
+            msgg = await bot.get_messages(update.chat.id, mes.msg_id)
+            await msgg.download(file_name=thumb_image_path)
+            thumb_image_path = thumb_image_path
+        else:
+            thumb_image_path = None
+
+    if thumb_image_path is None:
+        try:
+            await msgg.edit_text("**😰 Oops... No Thumbnail found for you in Database...!**")
+        except:
+              pass               
+    else:
+        try:
+           await msgg.delete()
+
+        except:
+            pass
+
+        await bot.send_photo(
+        photo=thumb_image_path,
+        caption="__**👀 Your Permanent Thumbnail... 👆🏻**__",
+        reply_markup=InlineKeyboardMarkup([[
+          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]]), 
+        quote=True
+    )
+  elif update.data == "delete":
+    download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.from_user.id)
+    try:
+        os.remove(download_location + ".jpg")
+        await del_thumb(update.from_user.id)
+    except:
+        pass
+    await update.answer("🗑️ Custom Thumbnail Deleted Successfully...!", show_alert=True)
+    await update.message.delete()
   elif update.data == "close":
     await update.message.delete()
     await update.message.reply_to_message.delete()
