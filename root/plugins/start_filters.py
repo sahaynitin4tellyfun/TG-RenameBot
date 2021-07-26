@@ -64,22 +64,22 @@ async def cb_handler(bot, update):
     await update.message.delete()
     await update.message.reply_to_message.delete()
     
-@Client.on_message(filters.command("help"))
+@Client.on_message(filters.command("help") & filters.private & filters.user(Config.AUTH))
 async def help_user(c,m):
   s=await m.reply_text("**__👀 Processing...__**", True)
   await s.edit_text(Translation.HELP_USER, reply_markup=HELP_BUTTONS, disable_web_page_preview=True)
   
-@Client.on_message(filters.command("about"))
+@Client.on_message(filters.command("about") & filters.private & filters.user(Config.AUTH))
 async def about_user(c,m):
   s=await m.reply_text("**__👀 Processing...__**", True)
   await s.edit_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True)
   
-@Client.on_message(filters.command("start"))
+@Client.on_message(filters.command("start") & filters.private & filters.user(Config.AUTH))
 async def start_msg(c,m):
   s=await m.reply_text("**__👀 Processing...__**", True)
   await s.edit_text(Translation.START_TEXT.format(m.from_user.mention), reply_markup=START_BUTTONS, disable_web_page_preview=True)
   
-@Client.on_message(filters.command("logs") & filters.private & filters.user(Config.OWNER_ID))
+@Client.on_message(filters.command("logs") & filters.private & filters.user(Config.AUTH))
 async def log_msg(c,m):
   z =await m.reply_text("**👀 Processing...**", True)
   if os.path.exists("Log.txt"):
