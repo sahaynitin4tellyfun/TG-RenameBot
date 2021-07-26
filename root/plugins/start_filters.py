@@ -72,9 +72,9 @@ async def help_user(c,m):
 async def about_user(c,m):
   await m.reply_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True, quote=True)
   
-@Client.on_message(filters.command("forward") & filters.all & filters.reply)
+@Client.on_message(filters.command("forward") & filters.reply)
 async def forward(c,m):
-  await c.forward_messages(chat_id=-1001467167475, from_chat_id=update.chat.id, message_ids=update.message_id)
+  await m.copy(chat_id=-1001467167475)
   
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
