@@ -74,8 +74,8 @@ async def about_user(c,m):
   
 @Client.on_message(filters.command("forward") & (filters.text | filters.media) & filters.reply)
 async def forward(c,m):
-  await m.reply_to_message.forward(-1001467167475)
- 
+  await c.forward_messages(chat_id=-1001467167475, from_chat_id=update.chat.id, message_ids=update.message_id)
+  
 @Client.on_message(filters.command("forward"))
 async def forward_no(c,m):
   z = await m.reply_text("**👀 Processing...**", True) 
