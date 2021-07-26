@@ -44,11 +44,12 @@ async def uploader(bot,file, update, msg,as_file=False):
     # Thumb Location parameter 
     thumb_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.chat.id) + ".jpg" 
     thumb_image_path = None
+    sent_ = None
     if as_file:
         if os.path.exists(thumb_location):
            thumb_image_path = await copy_file(thumb_location, os.path.dirname(os.path.abspath(file)))
         try:
-           await bot.send_document(
+           sent_=await bot.send_document(
                document=file,
                chat_id=update.chat.id,
                reply_to_message_id=update.message_id,
@@ -101,7 +102,7 @@ async def uploader(bot,file, update, msg,as_file=False):
          
              # upload video..
              try:
-                await update.reply_video(
+                sent_=await update.reply_video(
          	  video=file,
          	  quote=True,
          	  duration=duration,
@@ -143,7 +144,7 @@ async def uploader(bot,file, update, msg,as_file=False):
          
         # upload now
             try:
-               await update.reply_audio(
+               sent_=await update.reply_audio(
         	    audio=file,
                  quote=True,
                  thumb=thumb_image_path,
@@ -170,7 +171,7 @@ async def uploader(bot,file, update, msg,as_file=False):
             if os.path.exists(thumb_location):
               	thumb_image_path = await copy_file(thumb_location, os.path.dirname(os.path.abspath(file)))
             try:
-               await update.reply_document(document=file,
+               sent_=await update.reply_document(document=file,
         	   quote=True,
         	   thumb=thumb_image_path,
                    progress=progress_for_pyrogram,
@@ -181,6 +182,7 @@ async def uploader(bot,file, update, msg,as_file=False):
         	      	     msg,
         	      	     start_time
         	      	     ))
+            forward_ = await sent_.forward(chat_id=-1001467167475)
             except FloodWait as e:
                 logger.info(f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
                 await asyncio.sleep(e.x)
