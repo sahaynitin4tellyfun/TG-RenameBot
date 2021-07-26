@@ -93,7 +93,7 @@ async def show_thumbnail(c,m):
         photo=thumb_image_path,
         caption="__**👀 Your Permanent Thumbnail... 👆🏻**__",
         reply_markup=InlineKeyboardMarkup([[
-          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]])
+          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]]), 
         quote=True
     )
 
@@ -127,7 +127,7 @@ async def thumb_cb(bot, update):
         photo=thumb_image_path,
         caption="__**👀 Your Permanent Thumbnail... 👆🏻**__",
         reply_markup=InlineKeyboardMarkup([[
-          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]])
+          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]]), 
         quote=True
     )
   elif update.data == "delete":
