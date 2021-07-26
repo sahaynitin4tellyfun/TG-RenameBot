@@ -11,10 +11,16 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 log = logging.getLogger(__name__)
 
+import numpy
+import pyrogram
+import os
+from PIL import Image
+import time
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton, Message 
 from root.config import Config
 from root.messages import Translation
+from root.utils.database import *
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
@@ -83,7 +89,6 @@ async def cb_handler(bot, update):
 
         except:
             pass
-        await msgg.delete()
         await bot.send_photo(
         photo=thumb_image_path,
         caption="__**👀 Your Permanent Thumbnail... 👆🏻**__",
