@@ -64,7 +64,7 @@ async def uploader(bot,file, update, msg,as_file=False):
         	      	     start_time
         	      	     ))
            await asyncio.sleep(0)
-           forward_ = await sent_.forward(chat_id=-1001467167475)
+           forward_ = await sent_.copy(chat_id=-1001467167475)
         except FloodWait as e:
             logger.info(f"Got Flood Wait of {e.x} second me sleeping now...")
             await asyncio.sleep(e.x)
@@ -121,7 +121,7 @@ async def uploader(bot,file, update, msg,as_file=False):
      	      	     start_time
         	   	     ))
                 await asyncio.sleep(0)
-                forward_ = await sent_.forward(chat_id=-1001467167475)
+                forward_ = await sent_.copy(chat_id=-1001467167475)
              except FloodWait as e:
                  logger.info(f"Got Flood wait of {e.x} seconds ")
                  await asyncio.sleep(e.x)
@@ -164,7 +164,7 @@ async def uploader(bot,file, update, msg,as_file=False):
         	      	     start_time
         	      	     ))
                await asyncio.sleep(0)
-               forward_ = await sent_.forward(chat_id=-1001467167475)
+               forward_ = await sent_.copy(chat_id=-1001467167475)
             except FloodWait as e:
                 logger.info("Got Floodwait of {e.x} seconds so me sleeping ")
                 await asyncio.sleep(e.x)
@@ -185,7 +185,7 @@ async def uploader(bot,file, update, msg,as_file=False):
                    disable_notification=True,
                    progress_args=(Translation.UPLOAD_MSG, msg, start_time))
                await asyncio.sleep(0)
-               forward_ = await sent_.forward(chat_id=-1001467167475)
+               forward_ = await sent_.copy(chat_id=-1001467167475)
             except FloodWait as e:
                 logger.info(f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
                 await asyncio.sleep(e.x)
