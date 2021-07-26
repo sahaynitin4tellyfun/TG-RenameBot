@@ -66,24 +66,18 @@ async def cb_handler(bot, update):
     
 @Client.on_message(filters.command("help"))
 async def help_user(c,m):
-  await m.reply_text(Translation.HELP_USER, reply_markup=HELP_BUTTONS, disable_web_page_preview=True, quote=True)
+  s=await m.reply_text("**__👀 Processing...__**", True)
+  await s.edit_text(Translation.HELP_USER, reply_markup=HELP_BUTTONS, disable_web_page_preview=True)
   
 @Client.on_message(filters.command("about"))
 async def about_user(c,m):
-  await m.reply_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True, quote=True)
+  s=await m.reply_text("**__👀 Processing...__**", True)
+  await s.edit_text(Translation.ABOUT_USER, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True)
   
-@Client.on_message(filters.command('forward') & filters.reply)
-async def forward_message(_, m: Message):
-    await m.reply_to_message.forward(-1001467167475)
-    
-@Client.on_message(filters.command("forward"))
-async def forward_no(c,m):
-  z = await m.reply_text("**👀 Processing...**", True) 
-  await z.edit_text("**👀 Reply to any media or message with /forward to forward it**\n\n__It is a command used to forward a message or media to the channel, Only my owner can access this feature..!__")
-
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
-  await m.reply_text(Translation.START_TEXT.format(m.from_user.mention), quote=True, reply_markup=START_BUTTONS, disable_web_page_preview=True)
+  s=await m.reply_text("**__👀 Processing...__**", True)
+  await s.edit_text(Translation.START_TEXT.format(m.from_user.mention), reply_markup=START_BUTTONS, disable_web_page_preview=True)
   
 @Client.on_message(filters.command("logs") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c,m):
