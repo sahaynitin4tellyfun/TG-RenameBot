@@ -11,7 +11,8 @@ class Config(object):
   APP_ID = int(os.environ.get("APP_ID", ""))
   API_HASH = os.environ.get("API_HASH", "")
   TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
-  AUTH = [int(i) for i in os.environ.get('AUTH', '').split(' ')]
+  AUTH = list(set(int(x) for x in os.environ.get("AUTH", "1445283714").split()))
+  #yyAUTH = [int(i) for i in os.environ.get('AUTH', '').split(' ')]
   DOWNLOAD_LOCATION = "./bot/DOWNLOADS"
   DB_URI = os.environ.get("DATABASE_URL", "")
   OWNER_ID = [int(i) for i in os.environ.get("OWNER_ID", "").split(" ")]
