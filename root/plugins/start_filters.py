@@ -62,7 +62,7 @@ async def cb_handler(bot, update):
     )
   elif update.data == "show":
     thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.from_user.id) + ".jpg"
-    msgg = await bot.send_message("**👀 Getting Your Thumbnail...**",quote=True)
+    msgg = await bot.send_message("**👀 Getting Your Thumbnail...**",True)
     if not os.path.exists(thumb_image_path):
         mes = await thumb(update.from_user.id)
         if mes is not None:
@@ -83,13 +83,12 @@ async def cb_handler(bot, update):
 
         except:
             pass
-
+        await msgg.delete()
         await bot.send_photo(
         photo=thumb_image_path,
         caption="__**👀 Your Permanent Thumbnail... 👆🏻**__",
         reply_markup=InlineKeyboardMarkup([[
-          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]]), 
-        quote=True
+          InlineKeyboardButton("🗑️ Delete Thumbnail..!", callback_data="delete")]])
     )
   elif update.data == "delete":
     download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.from_user.id)
