@@ -39,12 +39,10 @@
       "value": ""
     },
     "DOWN_PATH": {
-      
-      
-            "description": "Files download path. You can keep default. Should not end with '/'",
-            "required": false,
-            "value": "./downloads"
-        },
+      "description": "Files download path. You can keep default. Should not end with '/'",
+      "required": false,
+      "value": "./downloads"
+    },
     "OWNER_USERNAME": {
       "description": "(Optional)Owners username to use at start msg button..",
       "required": false
