@@ -144,15 +144,16 @@ async def start_msg(c,m, cb=False):
 @Client.on_message(filters.command(["generate_ss", "screenshot"]) & filters.private)
 async def screenshot(c,m):
   caption = f"**__© Coded By @AVBotz ❤️__**"
-  await m.message.edit("**📝 Okay..! Generating Screenshots...**")
-  generate_ss_dir = f"{Config.DOWN_PATH}/{str(m.from_user.id)}"
-  list_images = await generate_screen_shots(path, generate_ss_dir, 9, duration)
-  if list_images is None:
-    await m.message.edit("**Failed to get Screenshots!**")
-    await asyncio.sleep(0)
-  else:
-    await m.message.edit("**Generated Screenshots Successfully!**\n**Now Uploading them...**")
-    photo_album = list()
+  if (await db.get_generate_ss(cb.from_user.id)) is True:
+    await m.reply_text("**📝 Okay..! Generating Screenshots...**")
+    generate_ss_dir = f"{Config.DOWN_PATH}/{str(m.from_user.id)}"
+    list_images = await generate_screen_shots(path, generate_ss_dir, 9, duration)
+    if list_images is None:
+      await m.message.edit_text("**Failed to get Screenshots!**")
+      await asyncio.sleep(0)
+    else:
+      await m.message.edit_text("**Generated Screenshots Successfully!**\n**Now Uploading them...**")
+      photo_album = list()
     
   if list_images is not None:
     i = 0
@@ -171,8 +172,8 @@ async def screenshot(c,m):
           
 @Client.on_message(filters.command(["generate_sample", "sample"]) & filters.private)
 async def sample(c,m):
-  if duration >= 15:
-    await m.message.edit("**Now Generating Sample Video...**")
+  if ((await db.get_generate_sample_video(m.from_user.id)) is True) and (duration >= 15):
+    await m.reply_text("**Now Generating Sample Video...**")
     sample_vid_dir = f"{Config.DOWN_PATH}/{m.from_user.id}/"
     ttl = int(duration*10 / 100)
     sample_video = await cult_small_video(
@@ -183,10 +184,10 @@ async def sample(c,m):
       format_=FormtDB.get(m.from_user.id)
             )
     if sample_video is None:
-      await m.message.edit("**Failed to Generate Sample Video!**")
+      await m.message.edit_text("**Failed to Generate Sample Video!**")
       await asyncio.sleep(0)
     else:
-      await m.message.edit("**Successfully Generated Sample Video!**\n**Now Uploading it...**")
+      await m.message.edit_text("**Successfully Generated Sample Video!**\n**Now Uploading it...**")
       sam_vid_duration = 5
       sam_vid_width = 100
       sam_vid_height = 100
@@ -199,7 +200,7 @@ async def sample(c,m):
         if metadata.has("height"):
           sam_vid_height = metadata.get("height")
       except:
-        await m.message.edit("**☹️ Sample Video File Corrupted!**")
+        await m.message.edit_text("**☹️ Sample Video File Corrupted!**")
         await asyncio.sleep(0)
         try:
           c_time = time.time()
@@ -217,7 +218,7 @@ async def sample(c,m):
         except Exception as sam_vid_err:
           print(f"Got Error While Trying to Upload Sample File:\n{sam_vid_err}")
           try:
-            await m.message.edit("**Failed to Upload Sample Video!**")
+            await m.message.edit_text("**Failed to Upload Sample Video!**")
             await asyncio.sleep(0)
           except:
             pass
