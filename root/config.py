@@ -18,3 +18,6 @@ class Config(object):
   OWNER_ID = [int(i) for i in os.environ.get("OWNER_ID", "").split(" ")]
   OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "BotDunia")
   CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION",False)
+  SESSION_NAME = os.environ.get("SESSION_NAME", "Rename-Bot")
+  MONGODB_URI = os.environ.get("MONGODB_URI")
+  DOWN_PATH = os.environ.get("DOWN_PATH", "./downloads")
