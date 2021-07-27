@@ -1,7 +1,7 @@
 import asyncio
 import os
 import time
-from config import Config
+from root.config import Config
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 async def cult_small_video(video_file, output_directory, start_time, end_time, format_):
