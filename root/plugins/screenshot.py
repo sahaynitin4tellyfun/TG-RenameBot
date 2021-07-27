@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 import os
 import shutil
 import time
-from config import Config
+from root.config import Config
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
