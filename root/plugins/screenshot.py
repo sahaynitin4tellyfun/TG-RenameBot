@@ -7,6 +7,7 @@ import os
 import shutil
 import time
 from root.config import Config
+from pyrogram import Client, filters 
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -15,7 +16,7 @@ from root.plugins.ffmpeg import generate_screen_shots
 from root.utils.utils import progress_for_pyrogram
 
 
-@Client.on_message(pyrogram.filters.command(["generate_ss","screenshot"]))
+@Client.on_message(filters.command(["generate_ss","screenshot"]))
 async def generate_screen_shot(bot, update):
     if update.reply_to_message is not None:
         download_location = Config.DOWNLOAD_LOCATION + "/"
