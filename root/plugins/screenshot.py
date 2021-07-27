@@ -12,7 +12,7 @@ import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from root.plugins.ffmpeg import generate_screen_shots
-from root.utils.progress_bar import progress_for_pyrogram
+from root.utils.utils import progress_for_pyrogram
 
 
 @Client.on_message(pyrogram.filters.command(["generate_ss","screenshot"]))
