@@ -21,7 +21,7 @@ async def generate_screen_shot(bot, update):
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text="**✅ Okay... Generating ScreenShots...!**",
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
@@ -30,14 +30,14 @@ async def generate_screen_shot(bot, update):
             file_name=download_location,
             progress=progress_for_pyrogram,
             progress_args=(
-                Translation.DOWNLOAD_START,
+                "**✅ Okay... Generating ScreenShots...!**",
                 a,
                 c_time
             )
         )
         if the_real_download_location is not None:
             await bot.edit_message_text(
-                text=Translation.SAVED_RECVD_DOC_FILE,
+                text="**✅ Successfully Generated Screenshots... Now Uploading them 👇🏻**",
                 chat_id=update.chat.id,
                 message_id=a.message_id
             )
@@ -48,20 +48,19 @@ async def generate_screen_shot(bot, update):
                 the_real_download_location,
                 tmp_directory_for_each_user,
                 False,
-                Config.DEF_WATER_MARK_FILE,
                 5,
                 9
             )
             logger.info(images)
             await bot.edit_message_text(
-                text=Translation.UPLOAD_START,
+                text="**🥳 Uploading To Telegram...**",
                 chat_id=update.chat.id,
                 message_id=a.message_id
             )
             media_album_p = []
             if images is not None:
                 i = 0
-                caption = "© @Hx_AnyDLBot"
+                caption = "__**© Coded By Animesh Verma**__"
                 for image in images:
                     if os.path.exists(image):
                         if i == 0:
@@ -92,7 +91,7 @@ async def generate_screen_shot(bot, update):
             except:
                 pass
             await bot.edit_message_text(
-                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                text="**😝 Successfully Uploaded ScreenShots... 📸\n✅ Thanks for Using Meh..!**",
                 chat_id=update.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
@@ -100,6 +99,6 @@ async def generate_screen_shot(bot, update):
     else:
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.REPLY_TO_DOC_FOR_SCSS,
+            text="**😓 You Noobie, Reply to a Telegram Media to Generate ScreenShots...!**",
             reply_to_message_id=update.message_id
         )
