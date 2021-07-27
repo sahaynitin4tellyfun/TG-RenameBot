@@ -17,6 +17,8 @@ import os
 from PIL import Image
 import time
 from pyrogram import Client,filters
+from ..ffmpeg import generate_screen_shots, cult_small_video
+from ..access_db import db
 from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton, Message 
 from root.config import Config
 from root.messages import Translation
