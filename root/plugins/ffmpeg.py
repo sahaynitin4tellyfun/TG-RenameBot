@@ -1,48 +1,8 @@
 import asyncio
 import os
 import time
-from configs import Config
+from config import Config
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-
-async def MergeVideo(input_file: str, user_id: int, message: Message, format_: str):
-    """
-    This is for Merging Videos Together!
-    :param input_file: input.txt file's location.
-    :param user_id: Pass user_id as integer.
-    :param message: Pass Editable Message for Showing FFmpeg Progress.
-    :param format_: Pass File Extension.
-    :return: This will return Merged Video File Path
-    """
-    output_vid = f"{Config.DOWN_PATH}/{str(user_id)}/[@AniMesH941]_Merged.{format_.lower()}"
-    file_generator_command = [
-        "ffmpeg",
-        "-f",
-        "concat",
-        "-safe",
-        "0",
-        "-i",
-        input_file,
-        "-c",
-        "copy",
-        output_vid
-    ]
-    process = await asyncio.create_subprocess_exec(
-        *file_generator_command,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    await message.edit("**Merging Your Video Now...**\n\n**Please Keep Patience...**",
-                       reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⛔ Cancel Process 🗑️", callback_data="cancelProcess")]]))
-    stdout, stderr = await process.communicate()
-    e_response = stderr.decode().strip()
-    t_response = stdout.decode().strip()
-    print(e_response)
-    print(t_response)
-    if os.path.lexists(output_vid):
-        return output_vid
-    else:
-        return None
-
 
 async def cult_small_video(video_file, output_directory, start_time, end_time, format_):
     # https://stackoverflow.com/a/13891070/4723940
