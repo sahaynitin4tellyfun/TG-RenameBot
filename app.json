@@ -20,6 +20,9 @@
       "description": "Get this value from https://my.telegram.org",
       "value": ""
     },
+    "MONGODB_URI": {
+      "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
+    },
     "API_HASH": {
       "description": "Get this value from https://my.telegram.org",
       "value": ""
@@ -27,11 +30,21 @@
     "AUTH": {
       "description": "AUTH Users",
       "value": ""
-    }, 
+    },
+    "SESSION_NAME": {
+      "description": "Bot's Session Name."
+    },
     "OWNER_ID": {
       "description": "Owner userid to use for getting logs..",
       "value": ""
     },
+    "DOWN_PATH": {
+      
+      
+            "description": "Files download path. You can keep default. Should not end with '/'",
+            "required": false,
+            "value": "./downloads"
+        },
     "OWNER_USERNAME": {
       "description": "(Optional)Owners username to use at start msg button..",
       "required": false
